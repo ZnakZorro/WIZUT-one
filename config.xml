@@ -25,10 +25,10 @@
 <icon src="pliki/wizut.png" gap:platform="android" gap:density="mdpi" />
 <icon src="pliki/wizut.png" gap:platform="android" gap:density="hdpi" />
 <icon src="pliki/wizut.png" gap:platform="android" gap:density="xhdpi" />
-    <gap:splash src="wizutx.png"  gap:platform="android" gap:density="ldpi" />
-    <gap:splash src="wizutx.png"  gap:platform="android" gap:density="mdpi" />
-    <gap:splash src="wizutx.png"  gap:platform="android" gap:density="hdpi" />
-    <gap:splash src="wizutx.png" gap:platform="android" gap:density="xhdpi" />
+    <gap:splash src="pliki/wizutx.png"  gap:platform="android" gap:density="ldpi" />
+    <gap:splash src="pliki/wizutx.png"  gap:platform="android" gap:density="mdpi" />
+    <gap:splash src="pliki/wizutx.png"  gap:platform="android" gap:density="hdpi" />
+    <gap:splash src="pliki/wizutx.png" gap:platform="android" gap:density="xhdpi" />
 
 
 

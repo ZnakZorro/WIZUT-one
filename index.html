@@ -1,24 +1,25 @@
 <!doctype html>
 <html>
 <head>
-<title>WI ZUT mini3</title>
+<title>WI ZUT one mini</title>
 <meta charset="utf-8" />
 <meta http-equiv="X-UA-Compatible" content="chrome=1">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link href="_/favicon.ico" rel="shortcut icon" type="image/x-icon" />
-<link href='_/font_PT_Sans_Narrow.css' rel='stylesheet' type='text/css'>
-<link rel="stylesheet" type="text/css" href="_/mini3.css" />
+<link href="pliki/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+<link href='pliki/font_PT_Sans_Narrow.css' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" type="text/css" href="pliki/mini3.css" />
 <script type="text/javascript" charset="utf-8" src="cordova-2.2.0.js"></script>
 <script>
-
+var menuOpen=false;
     function onLoad() {
         document.addEventListener("deviceready", onDeviceReady, false);
-		onDeviceReady();
-		
+		onDeviceReady();	
     }
 
 	function onDeviceReady() {
-	
+			document.addEventListener("backbutton", onBackKeyDown, false);
+			document.addEventListener("menubutton", onMenuKeyDown, false);		
+
 		loadXMLDoc('http://www.wi.zut.edu.pl/aktualnosci?format=raw&i=3','aktualnosci');
 		loadXMLDoc('http://www.wi.zut.edu.pl/ogloszenia?format=raw&i=5','studenci');
 		loadXMLDoc('http://www.wi.zut.edu.pl/plan-zajec/zmiany-w-planie?format=raw&d=7&i=5','plan');
@@ -27,10 +28,28 @@
 		loadXMLDoc('http://www.wi.zut.edu.pl/ogloszenia-dla-kandydatow?format=raw&i=3','kandydaci');
 
 		(function(){script=document.createElement('SCRIPT');script.type='text/javascript';script.src='http://www.wi.zut.edu.pl/cdn/json/tydzien.json.php?callback=foo';document.getElementsByTagName('head')[0].appendChild(script);})();  
-
-	
 	}
 
+	
+	function onBackKeyDown() {
+		//document.getElementById('test').innerHTML='onBackKeyDown<br />';
+		//navigator.app.backHistory();
+		//super.loadUrl("file:///android_asset/www/index.html");
+		//console.log('onBackKeyDown');
+		//moveID(-1);
+		//var id=czytajID();
+		//document.getElementById('test').innerHTML='onBackKeyDown '+opiszID();
+
+    }
+	
+	function onMenuKeyDown() {
+		if (menuOpen) {document.getElementById("menu").style.display="none"; zapal();menuOpen=false;}
+		else          {document.getElementById("menu").style.display="block"; zapal();menuOpen=true;}
+    }	
+	
+function zapal(){document.getElementById("strona").style.opacity='1.0';}	
+function zgas(){document.getElementById("strona").style.opacity='0.7';}	
+	
 function loadXMLDoc(xurl,myDiv){
 	var xmlhttp;
 	if   (window.XMLHttpRequest){xmlhttp=new XMLHttpRequest();}
@@ -88,21 +107,25 @@ function dzien(x,z,o,d){
 </head>
 
 <body onload="onLoad()">
+<!--
 <div class="grid grid-pad">
 	<div class="col-1-1">
+	
 		<div class="content menu">
-		<a href="#aktualnosci">Aktualności</a>
-		<a href="#ogloszenia">Studenci</a>
-		<a href="#zmiany-w-planie">Plan</a>
-		<a href="#doktoranci-wizut">Doktoranci</a>
-		<a href="#pracownicy">Pracownicy</a>
-		<a href="#ogloszenia-dla-kandydatow">Kandydaci</a>
-		<a href="http://wi.zut.edu.pl" style="padding:0;" title="WI.ZUT.EDU.PL"><img src="_/mini-wizut.jpg" style="height:24px; width:88px; padding:0;" /></a>
-		<a href="http://zut.edu.pl" style="padding:0;" title="ZUT.EDU.PL"><img src="_/mini-zut.jpg" style="height:24px; width:88px; padding:0;" /></a>
+			<a href="#aktualnosci">Aktualności</a>
+			<a href="#ogloszenia">Studenci</a>
+			<a href="#zmiany-w-planie">Plan</a>
+			<a href="#doktoranci-wizut">Doktoranci</a>
+			<a href="#pracownicy">Pracownicy</a>
+			<a href="#ogloszenia-dla-kandydatow">Kandydaci</a>
+			<a href="http://wi.zut.edu.pl" style="padding:0;" title="WI.ZUT.EDU.PL"><img src="pliki/mini-wizut.jpg" style="height:24px; width:88px; padding:0;" /></a>
+			<a href="http://zut.edu.pl" style="padding:0;" title="ZUT.EDU.PL"><img src="pliki/mini-zut.jpg" style="height:24px; width:88px; padding:0;" /></a>
 		</div>
 	</div>
 </div>
-		
+-->		
+
+<div class="grid grid-pad">WIZUT &nbsp; <button onClick="onMenuKeyDown();" class="btn btn-inverse">Menu</button> </div>
 <div class="grid grid-pad" id="tydzien"></div>
 
 <div id="strona">
@@ -145,7 +168,7 @@ function dzien(x,z,o,d){
 </div>
 </div><!--//id=strona-->
 
-<div class="grid grid-pad">
+<!--div class="grid grid-pad">
 	<div class="col-1-1">
 		<div class="content menu">
 		<a href="#aktualnosci">Aktualności</a>
@@ -154,17 +177,26 @@ function dzien(x,z,o,d){
 		<a href="#doktoranci-wizut">Doktoranci</a>
 		<a href="#pracownicy">Pracownicy</a>
 		<a href="#ogloszenia-dla-kandydatow">Kandydaci</a>
-		<a href="http://wi.zut.edu.pl" style="padding:0;" title="WI.ZUT.EDU.PL"><img src="_/mini-wizut.jpg" style="height:24px; width:88px; padding:0;" /></a>
-		<a href="http://zut.edu.pl" style="padding:0;" title="ZUT.EDU.PL"><img src="_/mini-zut.jpg" style="height:24px; width:88px; padding:0;" /></a>
+		<a href="http://wi.zut.edu.pl" style="padding:0;" title="WI.ZUT.EDU.PL"><img src="pliki/mini-wizut.jpg" style="height:24px; width:88px; padding:0;" /></a>
+		<a href="http://zut.edu.pl" style="padding:0;" title="ZUT.EDU.PL"><img src="pliki/mini-zut.jpg" style="height:24px; width:88px; padding:0;" /></a>
 		</div>
 	</div>
-</div>
+</div-->
 
 <br />
 
 <br />
-<script>
-</script>
+	
+	<div id="menu" class="content menu" style="display:none; position:fixed; bottom:1px; left:0; width:100%; background:#247; color:#fff; border:1px solid #000; padding:2px; margin:0;">
+		<a href="#aktualnosci">Aktualności</a>
+		<a href="#ogloszenia">Studenci</a>
+		<a href="#zmiany-w-planie">Plan</a>
+		<a href="#doktoranci-wizut">Doktoranci</a>
+		<a href="#pracownicy">Pracownicy</a>
+		<a href="#ogloszenia-dla-kandydatow">Kandydaci</a>
+		<button onClick='loadURL("http://wi.zut.edu.pl")' class="im" title="WI.ZUT.EDU.PL"> <img src="pliki/mini-wizut.jpg" style="height:24px; width:88px; padding:0;" /></button>
+		<button onClick='loadURL("http://zut.edu.pl")'    class="im" title="ZUT.EDU.PL">    <img src="pliki/mini-zut.jpg"   style="height:24px; width:88px; padding:0;" /></button>
+	</div>
 
 </body>
 </html>
