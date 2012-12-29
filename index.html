@@ -14,11 +14,13 @@ var menuOpen=false;
     function onLoad() {
         document.addEventListener("deviceready", onDeviceReady, false);
 		onDeviceReady();	
+		
     }
 
 	function onDeviceReady() {
 			document.addEventListener("backbutton", onBackKeyDown, false);
-			document.addEventListener("menubutton", onMenuKeyDown, false);		
+			document.addEventListener("menubutton", onMenuKeyDown, false);	
+			if (navigator.app) document.getElementById("menu").style.display="none";			
 
 		loadXMLDoc('http://www.wi.zut.edu.pl/aktualnosci?format=raw&i=3','aktualnosci');
 		loadXMLDoc('http://www.wi.zut.edu.pl/ogloszenia?format=raw&i=5','studenci');
@@ -125,7 +127,8 @@ function dzien(x,z,o,d){
 </div>
 -->		
 
-<div class="grid grid-pad">WIZUT &nbsp; <button onClick="onMenuKeyDown();" class="btn btn-inverse">Menu</button> </div>
+<!--div class="grid grid-pad">WIZUT &nbsp; <button onClick="onMenuKeyDown();" class="btn btn-inverse">Menu</button> </div-->
+<h1 style="text-align:center; color:#248; cursor:pointer;" onClick='loadURL("http://wi.zut.edu.pl")'>WIZUT - Wydział Informatyki ZUT w Szczecinie</h1>
 <div class="grid grid-pad" id="tydzien"></div>
 
 <div id="strona">
@@ -187,7 +190,7 @@ function dzien(x,z,o,d){
 
 <br />
 	
-	<div id="menu" class="content menu" style="display:none; position:fixed; bottom:1px; left:0; width:100%; background:#247; color:#fff; border:1px solid #000; padding:2px; margin:0;">
+	<div id="menu" class="content menu" style="display:block; position:fixed; bottom:1px; left:0; width:100%; background:#247; color:#fff; border:1px solid #000; padding:2px; margin:0;">
 		<a href="#aktualnosci">Aktualności</a>
 		<a href="#ogloszenia">Studenci</a>
 		<a href="#zmiany-w-planie">Plan</a>
