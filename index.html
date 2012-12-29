@@ -17,36 +17,43 @@ var maxAjax=6;
         document.addEventListener("deviceready", onDeviceReady, false);
 		onDeviceReady();	
 		var t=window.setInterval(function(){
-		if (ileAjax<maxAjax) {document.getElementById("test").innerText+='*****';} else {window.clearInterval(t);docredy();}
-		},20);
+			if (ileAjax<maxAjax) {document.getElementById("test").innerText+='*****';} else {window.clearInterval(t);docredy();}
+		},100);
     }
 	function docredy(){
-		//document.getElementById("test").innerText='koniec='+ileAjax+' '+maxAjax;
 		document.getElementById("test").style.display='none';
 		var strona=document.getElementById("strona");
 		var ahrefy=strona.getElementsByTagName("A");
-		//console.log(ahrefy);
-		//var arr=[];
+		console.log(ahrefy);
+		var arr=[];
+		var i=0;
 		for (var a in ahrefy){
-			if (ahrefy[a].href)	{
-				var ah=ahrefy[a].href;
-				//ahrefy[a].href='#';
-				//ahrefy[a].addEventListener('onClick',function(){loadURL(ah);});
-				ahrefy[a].onclick=function(e){
-					//console.log(e);
-					e.preventDefault();
-					loadURL(ah);
-					//ahrefy[a].style.color="red";
-					}
-			}
-		}
 		
+			if (ahrefy[a].href)	{
+				
+				arr[i]=ahrefy[a].href;
+				var ah=arr[i];
+				
+				
+				//ahrefy[a].addEventListener('onClick',function(e){
+					//loadURL_(i);
+					//e.preventDefault();
+					//},true);
+				//console.log(ah);
+				
+				ahrefy[a].onclick=function(e){
+					e.preventDefault();
+					loadURL_(i+ah);
+				}
+				ahrefy[a].href='#';
+			}
+		i++;	
+		}
+		//console.log(arr);
 	}
 
 
-	function loadURL_(url){
-	alert (url);
-	}
+	function loadURL_(url){	alert (url);}
 	
 	function onDeviceReady() {
 			document.addEventListener("backbutton", onBackKeyDown, false);
@@ -82,8 +89,6 @@ var maxAjax=6;
 		//window.scrollTo(0,0);
     }	
 	
-function zapal(){document.getElementById("strona").style.opacity='1.0';}	
-function zgas(){document.getElementById("strona").style.opacity='0.7';}	
 	
 function loadXMLDoc(xurl,myDiv){
 	var xmlhttp;
@@ -100,6 +105,13 @@ function loadXMLDoc(xurl,myDiv){
 }
 
 
+function zapal(){document.getElementById("strona").style.opacity='1.0';}	
+function zgas(){document.getElementById("strona").style.opacity='0.7';}	
+
+function koniec(){
+	zgas();
+	navigator.app.exitApp();
+}
 
 function loadURL(url){
 try  { navigator.app.loadUrl(url, { openExternal:true } );  }
@@ -234,7 +246,7 @@ function dzien(x,z,o,d){
 		<a href="#ogloszenia-dla-kandydatow">Kandydaci</a>
 		<button onClick='loadURL("http://wi.zut.edu.pl")' class="im" title="WI.ZUT.EDU.PL"> <img src="pliki/mini-wizut.jpg" style="height:24px; width:88px; padding:0;" /></button>
 		<button onClick='loadURL("http://zut.edu.pl")'    class="im" title="ZUT.EDU.PL">    <img src="pliki/mini-zut.jpg"   style="height:24px; width:88px; padding:0;" /></button>
-		<button onClick="navigator.app.exitApp();"     class="btn btn-danger">Koniec</button>
+		<button onClick="koniec();"     class="btn btn-danger">Koniec</button>
 	</div>
 
 </body>
