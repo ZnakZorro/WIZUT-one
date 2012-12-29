@@ -17,24 +17,25 @@ var maxAjax=6;
         document.addEventListener("deviceready", onDeviceReady, false);
 		onDeviceReady();	
 		var t=window.setInterval(function(){
-		if (ileAjax<maxAjax) {document.getElementById("test").innerText=ileAjax;} else {window.clearInterval(t);docredy();}
-		},1000);
+		if (ileAjax<maxAjax) {document.getElementById("test").innerText+='*****';} else {window.clearInterval(t);docredy();}
+		},20);
     }
 	function docredy(){
-		document.getElementById("test").innerText='koniec='+ileAjax+' '+maxAjax;
+		//document.getElementById("test").innerText='koniec='+ileAjax+' '+maxAjax;
+		document.getElementById("test").style.display='none';
 		var strona=document.getElementById("strona");
 		var ahrefy=strona.getElementsByTagName("A");
 		//console.log(ahrefy);
 		//var arr=[];
 		for (var a in ahrefy){
 			if (ahrefy[a].href)	{
-				//arr[a]=ahrefy[a].href;
+				var ah=ahrefy[a].href;
 				//ahrefy[a].href='#';
 				//ahrefy[a].addEventListener('onClick',function(){loadURL(ah);});
 				ahrefy[a].onclick=function(e){
-					console.log(e);
-					//e.preventDefault();
-					loadURL(ahrefy[a].href);
+					//console.log(e);
+					e.preventDefault();
+					loadURL(ah);
 					//ahrefy[a].style.color="red";
 					}
 			}
@@ -43,6 +44,10 @@ var maxAjax=6;
 	}
 
 
+	function loadURL_(url){
+	alert (url);
+	}
+	
 	function onDeviceReady() {
 			document.addEventListener("backbutton", onBackKeyDown, false);
 			document.addEventListener("menubutton", onMenuKeyDown, false);	
