@@ -11,11 +11,37 @@
 <script type="text/javascript" charset="utf-8" src="phonegap.js"></script>
 <script>
 var menuOpen=true;
+var ileAjax=0;
+var maxAjax=6;
     function onLoad() {
         document.addEventListener("deviceready", onDeviceReady, false);
 		onDeviceReady();	
-		
+		var t=window.setInterval(function(){
+		if (ileAjax<maxAjax) {document.getElementById("test").innerText=ileAjax;} else {window.clearInterval(t);docredy();}
+		},1000);
     }
+	function docredy(){
+		document.getElementById("test").innerText='koniec='+ileAjax+' '+maxAjax;
+		var strona=document.getElementById("strona");
+		var ahrefy=strona.getElementsByTagName("A");
+		//console.log(ahrefy);
+		//var arr=[];
+		for (var a in ahrefy){
+			if (ahrefy[a].href)	{
+				//arr[a]=ahrefy[a].href;
+				//ahrefy[a].href='#';
+				//ahrefy[a].addEventListener('onClick',function(){loadURL(ah);});
+				ahrefy[a].onclick=function(e){
+					console.log(e);
+					//e.preventDefault();
+					loadURL(ahrefy[a].href);
+					//ahrefy[a].style.color="red";
+					}
+			}
+		}
+		
+	}
+
 
 	function onDeviceReady() {
 			document.addEventListener("backbutton", onBackKeyDown, false);
@@ -48,7 +74,7 @@ var menuOpen=true;
 	function onMenuKeyDown() {
 		if (menuOpen) {document.getElementById("menu").style.display="none"; zapal();menuOpen=false;}
 		else          {document.getElementById("menu").style.display="block"; zapal();menuOpen=true;}
-		window.scrollTo(0,0);
+		//window.scrollTo(0,0);
     }	
 	
 function zapal(){document.getElementById("strona").style.opacity='1.0';}	
@@ -61,6 +87,7 @@ function loadXMLDoc(xurl,myDiv){
 	xmlhttp.onreadystatechange=function(){
 		if (xmlhttp.readyState==4 && xmlhttp.status==200){
 			document.getElementById(myDiv).innerHTML=xmlhttp.responseText;
+			ileAjax++;
 		}
 	}
 	xmlhttp.open("GET",xurl,true);
@@ -132,6 +159,7 @@ function dzien(x,z,o,d){
 <!--div class="grid grid-pad">WIZUT &nbsp; <button onClick="onMenuKeyDown();" class="btn btn-inverse">Menu</button> </div-->
 <h1 style="text-align:center; color:#248; cursor:pointer;" onClick='loadURL("http://wi.zut.edu.pl")'>WIZUT - Wydział Informatyki ZUT w Szczecinie</h1>
 <div class="grid grid-pad" id="tydzien"></div>
+<div id="test"></div>
 
 <div id="strona">
 
