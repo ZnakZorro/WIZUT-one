@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+    <widget xmlns = "http://www.w3.org/ns/widgets"
+        xmlns:gap = "http://phonegap.com/ns/1.0"
+        id        = "com.phonegap.WIZUT-one"
+        versionCode="10" 
+        version   = "1.0.0">
+
+
+    <name>WIZUT-one</name>
+
+    <description>
+        WiZut mini page 
+    </description>
+
+    <author href="http://wi.zut.edu.pl" email="zs@g.pl">
+        ZnakZorro
+    </author>
+    <preference name="phonegap-version" value="2.2.0" />
+    <preference name="orientation"      value="default" />
+    <preference name="target-device"    value="universal" />
+    <preference name="fullscreen"       value="true" />
+	
+<icon src="pliki/wizut.png" />
+<icon src="pliki/wizut.png" gap:platform="android" gap:density="ldpi" />
+<icon src="pliki/wizut.png" gap:platform="android" gap:density="mdpi" />
+<icon src="pliki/wizut.png" gap:platform="android" gap:density="hdpi" />
+<icon src="pliki/wizut.png" gap:platform="android" gap:density="xhdpi" />
+    <gap:splash src="wizutx.png"  gap:platform="android" gap:density="ldpi" />
+    <gap:splash src="wizutx.png"  gap:platform="android" gap:density="mdpi" />
+    <gap:splash src="wizutx.png"  gap:platform="android" gap:density="hdpi" />
+    <gap:splash src="wizutx.png" gap:platform="android" gap:density="xhdpi" />
+
+
+
+
+<access origin="*" onlyInBrowser="true" />
+<preference name="stay-in-webview" value="false" />
+
+
+</widget>
