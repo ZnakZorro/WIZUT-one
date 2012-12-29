@@ -10,7 +10,7 @@
 <link rel="stylesheet" type="text/css" href="pliki/mini3.css" />
 <script type="text/javascript" charset="utf-8" src="cordova-2.2.0.js"></script>
 <script>
-var menuOpen=false;
+var menuOpen=true;
     function onLoad() {
         document.addEventListener("deviceready", onDeviceReady, false);
 		onDeviceReady();	
@@ -20,7 +20,7 @@ var menuOpen=false;
 	function onDeviceReady() {
 			document.addEventListener("backbutton", onBackKeyDown, false);
 			document.addEventListener("menubutton", onMenuKeyDown, false);	
-			if (navigator.app) document.getElementById("menu").style.display="none";			
+			//if (navigator.app) document.getElementById("menu").style.display="none";			
 
 		loadXMLDoc('http://www.wi.zut.edu.pl/aktualnosci?format=raw&i=3','aktualnosci');
 		loadXMLDoc('http://www.wi.zut.edu.pl/ogloszenia?format=raw&i=5','studenci');
@@ -199,6 +199,7 @@ function dzien(x,z,o,d){
 		<a href="#ogloszenia-dla-kandydatow">Kandydaci</a>
 		<button onClick='loadURL("http://wi.zut.edu.pl")' class="im" title="WI.ZUT.EDU.PL"> <img src="pliki/mini-wizut.jpg" style="height:24px; width:88px; padding:0;" /></button>
 		<button onClick='loadURL("http://zut.edu.pl")'    class="im" title="ZUT.EDU.PL">    <img src="pliki/mini-zut.jpg"   style="height:24px; width:88px; padding:0;" /></button>
+		<button onClick="navigator.app.exitApp();"     class="btn btn-danger">Koniec</button>
 	</div>
 
 </body>

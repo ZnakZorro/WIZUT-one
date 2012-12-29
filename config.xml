@@ -20,11 +20,11 @@
     <preference name="target-device"    value="universal" />
     <preference name="fullscreen"       value="true" />
 	
-<icon src="pliki/wizut.png" />
-<icon src="pliki/wizut.png" gap:platform="android" gap:density="ldpi" />
-<icon src="pliki/wizut.png" gap:platform="android" gap:density="mdpi" />
-<icon src="pliki/wizut.png" gap:platform="android" gap:density="hdpi" />
-<icon src="pliki/wizut.png" gap:platform="android" gap:density="xhdpi" />
+<icon src="pliki/wizut-72.png" />
+<icon src="pliki/wizut-36.png" gap:platform="android" gap:density="ldpi" />
+<icon src="pliki/wizut-72.png" gap:platform="android" gap:density="mdpi" />
+<icon src="pliki/wizut-72.png" gap:platform="android" gap:density="hdpi" />
+<icon src="pliki/wizut-144.png" gap:platform="android" gap:density="xhdpi" />
     <gap:splash src="pliki/wizutx.png"  gap:platform="android" gap:density="ldpi" />
     <gap:splash src="pliki/wizutx.png"  gap:platform="android" gap:density="mdpi" />
     <gap:splash src="pliki/wizutx.png"  gap:platform="android" gap:density="hdpi" />

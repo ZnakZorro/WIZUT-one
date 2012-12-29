@@ -8,10 +8,10 @@ body {margin:0;background:#eee; font:normal 14px 'PT Sans Narrow', Arial, sans-s
 .grid-pad{padding:10px 0 0 20px}
 .grid-pad > [class*=col-]:last-of-type{padding-right:20px}
 .col-1-3{width:33.33%}
-@media handheld, only screen and (max-width: 767px) {
-.grid{width:100%;min-width:0;margin-left:0;margin-right:0;padding-left:0;padding-right:0}
-[class*=col-]{width:auto;float:none;padding-left:20px;padding-right:20px;margin:10px 0}
-}
+
+button {font-family:'PT Sans Narrow', Arial, sans-serif;}
+button.im{padding:0; border:0; line-height:0; border:1px solid #000; margin: 2px 6px;}
+
 /*=============*/
 h1 {font-size:1.3em; margin-top:5px;}
 h1.componentheading {font-size:1.75em; background:#369; float:left; width:100%; padding:4px; margin:0;}	
@@ -23,7 +23,8 @@ h4 {font-size:1.0em;}
 h5 {font-size:1.0em;}
 h3.opis{display:none;}
 .menu {float:left; }
-.menu a {float:left; border:1px solid #000; background:#369; color:#fff; text-decoration:none; margin:2px 6px; min-width:88px; text-align:center; font-size:16px; line-height:22px; height:27px; font-weight:bold;}
+.menu a, .btn {cursor:pointer; float:left; border:1px solid #000; background:#369; color:#fff; text-decoration:none; margin:2px 6px; min-width:88px; text-align:center; font-size:16px; line-height:22px; height:27px; font-weight:bold;}
+.btn-danger {background:#d42;}
 h1.componentheading:hover, .menu a:hover {background:#47a;}
 img {max-width:100%;max-height:300px; padding:5px;}
 span.article_separator {height:4px;clear:both;float:left; width:100%;}
@@ -33,6 +34,11 @@ border:1px solid #ccc;
 padding:8px;
 min-height: 104px;
 }
+
+.article-content{padding:3px 6px;}
+.doclink img {width:auto !important; float:left;}
+
+
 .content {border:1px solid white;}
 .day2 {background:#fafafa;}
 .day3 {background:#f8f8f8;}
@@ -41,9 +47,11 @@ min-height: 104px;
 /*@media (max-width: 979px) {
 .menu a {padding:4px; margin:4px; min-width:6em;}
 #tydzien {margin-left:20px;}
+
+
 }*/
 
-.article-content{padding:3px 6px;}
-.doclink img {width:auto !important; float:left;}
-
-button.im{padding:0; border:0; line-height:0; border:1px solid #000; margin: 2px 6px;}
+@media handheld, only screen and (max-width: 767px) {
+.grid{width:100%;min-width:0;margin-left:0;margin-right:0;padding-left:0;padding-right:0}
+[class*=col-]{width:auto;float:none;padding-left:10px;padding-right:10px;margin:5px 0}
+}
