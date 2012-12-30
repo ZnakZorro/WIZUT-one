@@ -14,7 +14,7 @@
 var menuOpen=true;
 var ileRazy=0;
 var ileAjax=0;
-var maxAjax=6;
+var maxAjax=7;
     function onLoad() {
         document.addEventListener("deviceready", onDeviceReady, false);
 		onDeviceReady();	
@@ -32,12 +32,15 @@ var maxAjax=6;
 		for (var a=0; a<ile; a++){
 			//console.log(ahrefy[a].href);
 			var ah=ahrefy[a].href;
-			if (ah)	{				
-				ahrefy[a].onclick=function(e){
+			if (ah)	{
+				
+				ahrefy[a].setAttribute('onClick','loadURL("'+ahrefy[a].href+'");');
+				ahrefy[a].href='javascript:void(0);';
+				/*ahrefy[a].onclick=function(e){
 					e.preventDefault();
 					loadURL(this);
-				}
-				//ahrefy[a].href='#';
+				}*/
+				//
 			}			
 		}
 
@@ -91,6 +94,9 @@ var maxAjax=6;
 		loadXMLDoc('http://www.wi.zut.edu.pl/doktoranci?format=raw&i=3','doktoranci');
 		loadXMLDoc('http://www.wi.zut.edu.pl/pracownicy?format=raw&i=3','pracownicy');
 		loadXMLDoc('http://www.wi.zut.edu.pl/ogloszenia-dla-kandydatow?format=raw&i=3','kandydaci');
+		loadXMLDoc('http://www.wi.zut.edu.pl/aktualnosci-biblioteki/aktualnosci-wydawnicze?format=raw&i=3','biblioteka');
+		
+	
 
 		(function(){script=document.createElement('SCRIPT');script.type='text/javascript';script.src='http://www.wi.zut.edu.pl/cdn/json/tydzien.json.php?callback=foo';document.getElementsByTagName('head')[0].appendChild(script);})();  
 	}
@@ -247,6 +253,12 @@ function skocz(name){
 			<div id="kandydaci"></div>
 		</div>
 	</div>
+	<div class="col-1-3">
+		<div class="wrapper">		
+			<div id="biblioteka"></div>
+		</div>
+	</div>
+
 </div>
 </div><!--//id=strona-->
 
@@ -270,22 +282,17 @@ function skocz(name){
 <br />
 	
 	<div id="menu" class="content menu" style="display:block; position:fixed; bottom:0px; left:0; width:100%; background:#247; color:#fff; border:1px solid #000; padding:2px; margin:0;">
-		<button onClick='skocz("aktualnosci")'      class="btn btn-info">Aktualności</button>
+		<button onClick='skocz("aktualnosci")'      class="btn btn-inverse">Aktualności</button>
 		<button onClick='skocz("ogloszenia")'       class="btn btn-warning">Studenci</button>
-		<button onClick='skocz("zmiany-w-planie")'  class="btn btn-inverse">Plan</button>
-		<button onClick='skocz("doktoranci-wizut")' class="btn ">Doktoranci</button>
-		<!--
-		<a href="#aktualnosci">Aktualności</a>
-		<a href="#ogloszenia">Studenci</a>
-		<a href="#zmiany-w-planie">Plan</a>
-		-->
-		<a href="#doktoranci-wizut">Doktoranci</a>
-		<a href="#pracownicy">Pracownicy</a>
-		<a href="#ogloszenia-dla-kandydatow">Kandydaci</a>
-				<button onClick="koniec();"     class="btn btn-danger">Koniec</button>
-
-		<button onClick='loadURL("http://wi.zut.edu.pl")' class="im" title="WI.ZUT.EDU.PL"> <img src="pliki/mini-wizut.jpg" style="height:24px; width:88px; padding:0;" /></button>
-		<button onClick='loadURL("http://zut.edu.pl")'    class="im" title="ZUT.EDU.PL">    <img src="pliki/mini-zut.jpg"   style="height:24px; width:88px; padding:0;" /></button>
+		<button onClick='skocz("zmiany-w-planie")'  class="btn btn-warning">Plan</button>
+		<button onClick='skocz("doktoranci-wizut")' class="btn btn-info">Doktoranci</button>
+		<button onClick='skocz("pracownicy")'                class="btn btn-info">Pracownicy</button>
+		<button onClick='skocz("ogloszenia-dla-kandydatow")' class="btn btn-info">Kandydaci</button>
+		<button onClick='skocz("biblioteka")' class="btn btn-inverse">Biblioteka</button>
+		
+		<button onClick="koniec();"     class="btn btn-danger">Koniec</button>
+		<button onClick='loadURL("http://wi.zut.edu.pl")' class="btn im" title="WI.ZUT.EDU.PL"> <img src="pliki/mini-wizut.jpg" /></button>
+		<button onClick='loadURL("http://zut.edu.pl")'    class="btn im" title="ZUT.EDU.PL">    <img src="pliki/mini-zut.jpg"   /></button>
 	</div>
 
 </body>
