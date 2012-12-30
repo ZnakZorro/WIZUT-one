@@ -17,6 +17,17 @@ h1 {font-size:1.3em; margin-top:5px;}
 h1.componentheading {font-size:1.6em; background:#369; float:left; width:100%; padding:4px; margin:0;}	
 h1.componentheading a {text-decoration:none; color:#fff;}
 h1 a.org {background:#69b; color:#fff; text-align:center;float:left; width:100%; padding:4px; margin:4px 0;text-decoration:none;}
+div.contentpaneopen h1 a {background:#69b; color:#fff; text-align:center;float:left; width:100%; padding:4px; margin:4px 0;text-decoration:none;}
+/*.out:after {content:"\00BB"; }*/
+.out:before {content:"\00BB"; }
+/*
+\2018 - Left Single Smart Quote
+\2019 - Right Single Smart Quote
+\00A9 - Copyright
+\2713 - Checkmark
+\2192 - Right arrow
+\2190 - Left arrow
+*/
 h2 {font-size:1.2em;}
 h3 {font-size:1.1em;}
 h4 {font-size:1.0em;}

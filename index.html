@@ -25,6 +25,7 @@ var maxAjax=7;
     }
 	function docredy(){
 		document.getElementById("test").style.display='none';
+		return;
 		var strona=document.getElementById("strona");
 		var ahrefy=strona.getElementsByTagName("A");
 		var ile=ahrefy.length;
@@ -127,7 +128,11 @@ function loadXMLDoc(xurl,myDiv){
 	else {xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");}
 	xmlhttp.onreadystatechange=function(){
 		if (xmlhttp.readyState==4 && xmlhttp.status==200){
-			document.getElementById(myDiv).innerHTML=xmlhttp.responseText;
+		
+			var tx=xmlhttp.responseText.replace(/class=\"org\" /g,"");
+			var tx=tx.replace(/<a href\=\"(.*?)\"/g,"<a href='javascript:void(0);' onClick='loadURL(\"$1\")' class='out'");
+			//console.log(tx);
+			document.getElementById(myDiv).innerHTML=tx;//xmlhttp.responseText;
 			ileAjax++;
 		}
 	}
