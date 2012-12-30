@@ -22,9 +22,12 @@ h3 {font-size:1.1em;}
 h4 {font-size:1.0em;}
 h5 {font-size:1.0em;}
 h3.opis{display:none;}
+
+.btn {min-width:90px;}
 .menu {float:left; }
-.menu a, .btn {cursor:pointer; float:left; border:1px solid #000; background:#369; color:#fff; text-decoration:none; margin:2px 6px; min-width:90px; text-align:center; font-size:16px; line-height:22px; height:27px; font-weight:bold;}
-.btn-danger {background:#d42;}
+
+.menu a {cursor:pointer; border:1px solid #000; background:#369; color:#fff; text-decoration:none; margin:2px 6px; min-width:90px; text-align:center; font-size:16px; line-height:22px; height:27px; font-weight:bold;}
+
 h1.componentheading:hover, .menu a:hover {background:#47a;}
 img {max-width:100%;max-height:300px; padding:5px;}
 span.article_separator {height:4px;clear:both;float:left; width:100%;}

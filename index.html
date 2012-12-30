@@ -6,21 +6,46 @@
 <meta http-equiv="X-UA-Compatible" content="chrome=1">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link href="pliki/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+<link rel="stylesheet" type="text/css" href="pliki/bootstrap.mi.css" />
 <link href='pliki/font_PT_Sans_Narrow.css' rel='stylesheet' type='text/css'>
 <link rel="stylesheet" type="text/css" href="pliki/mini3.css" />
 <script type="text/javascript" charset="utf-8" src="phonegap.js"></script>
 <script>
 var menuOpen=true;
+var ileRazy=0;
 var ileAjax=0;
 var maxAjax=6;
     function onLoad() {
         document.addEventListener("deviceready", onDeviceReady, false);
 		onDeviceReady();	
 		var t=window.setInterval(function(){
-			if (ileAjax<maxAjax) {document.getElementById("test").innerText+='*****';} else {window.clearInterval(t);docredy();}
-		},100);
+			//if (ileAjax<maxAjax) {document.getElementById("test").innerText+='*****';} else {window.clearInterval(t);docredy();}
+			if (ileAjax<maxAjax) {ileRazy++; if (ileRazy>10) window.clearInterval(t);} else {window.clearInterval(t);docredy();}
+		},333);
     }
 	function docredy(){
+		document.getElementById("test").style.display='none';
+		var strona=document.getElementById("strona");
+		var ahrefy=strona.getElementsByTagName("A");
+		var ile=ahrefy.length;
+		//console.log(ahrefy);
+		for (var a=0; a<ile; a++){
+			//console.log(ahrefy[a].href);
+			var ah=ahrefy[a].href;
+			if (ah)	{				
+				ahrefy[a].onclick=function(e){
+					e.preventDefault();
+					loadURL(this);
+				}
+				//ahrefy[a].href='#';
+			}			
+		}
+
+
+	}
+	function loadURL_(el){	alert (el);}	
+	
+	function docredy___(){
 		document.getElementById("test").style.display='none';
 		var strona=document.getElementById("strona");
 		var ahrefy=strona.getElementsByTagName("A");
@@ -53,7 +78,7 @@ var maxAjax=6;
 	}
 
 
-	function loadURL_(url){	alert (url);}
+
 	
 	function onDeviceReady() {
 			document.addEventListener("backbutton", onBackKeyDown, false);
@@ -109,15 +134,18 @@ function zapal(){document.getElementById("strona").style.opacity='1.0';}
 function zgas(){document.getElementById("strona").style.opacity='0.7';}	
 
 function koniec(){
-	zgas();
-	navigator.app.exitApp();
+	try  {navigator.app.exitApp();}
+	catch(err) {
+	  window.scrollTo(0,0);
+	  }
+	
 }
 
 function loadURL(url){
-try  { navigator.app.loadUrl(url, { openExternal:true } );  }
-catch(err) {
-  window.location.href=url;
-  }
+	try  { navigator.app.loadUrl(url, { openExternal:true } );  }
+	catch(err) {
+	  window.location.href=url;
+	  }
 }
 
 
@@ -151,6 +179,10 @@ function dzien(x,z,o,d){
 	return html;
 }
 
+
+function skocz(name){
+	window.location.href='#'+name;
+}
 </script>  
 </head>
 
@@ -238,15 +270,22 @@ function dzien(x,z,o,d){
 <br />
 	
 	<div id="menu" class="content menu" style="display:block; position:fixed; bottom:0px; left:0; width:100%; background:#247; color:#fff; border:1px solid #000; padding:2px; margin:0;">
+		<button onClick='skocz("aktualnosci")'      class="btn btn-info">Aktualności</button>
+		<button onClick='skocz("ogloszenia")'       class="btn btn-warning">Studenci</button>
+		<button onClick='skocz("zmiany-w-planie")'  class="btn btn-inverse">Plan</button>
+		<button onClick='skocz("doktoranci-wizut")' class="btn ">Doktoranci</button>
+		<!--
 		<a href="#aktualnosci">Aktualności</a>
 		<a href="#ogloszenia">Studenci</a>
 		<a href="#zmiany-w-planie">Plan</a>
+		-->
 		<a href="#doktoranci-wizut">Doktoranci</a>
 		<a href="#pracownicy">Pracownicy</a>
 		<a href="#ogloszenia-dla-kandydatow">Kandydaci</a>
+				<button onClick="koniec();"     class="btn btn-danger">Koniec</button>
+
 		<button onClick='loadURL("http://wi.zut.edu.pl")' class="im" title="WI.ZUT.EDU.PL"> <img src="pliki/mini-wizut.jpg" style="height:24px; width:88px; padding:0;" /></button>
 		<button onClick='loadURL("http://zut.edu.pl")'    class="im" title="ZUT.EDU.PL">    <img src="pliki/mini-zut.jpg"   style="height:24px; width:88px; padding:0;" /></button>
-		<button onClick="koniec();"     class="btn btn-danger">Koniec</button>
 	</div>
 
 </body>
