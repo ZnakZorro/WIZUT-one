@@ -10,6 +10,7 @@
 <link href='pliki/font_PT_Sans_Narrow.css' rel='stylesheet' type='text/css'>
 <link rel="stylesheet" type="text/css" href="pliki/mini3.css" />
 <script type="text/javascript" charset="utf-8" src="phonegap.js"></script>
+<script type="text/javascript" charset="utf-8" src="kapiszon.js"></script>
 <script>
 var menuOpen=true;
 var ileRazy=0;
@@ -116,8 +117,10 @@ var maxAjax=7;
     }
 	
 	function onMenuKeyDown() {
-		if (menuOpen) {document.getElementById("menu").style.display="none"; zapal();menuOpen=false;}
-		else          {document.getElementById("menu").style.display="block"; zapal();menuOpen=true;}
+		//if (menuOpen) {document.getElementById("menu").style.display="none"; zapal();menuOpen=false;}
+		//else          {document.getElementById("menu").style.display="block"; zapal();menuOpen=true;}
+		if (menuOpen) {$("#menu").style.display="none"; zapal();menuOpen=false;}
+		else          {$("#menu").style.display="block"; zapal();menuOpen=true;}
 		//window.scrollTo(0,0);
     }	
 	
@@ -128,7 +131,9 @@ function loadXMLDoc(xurl,myDiv){
 	else {xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");}
 	xmlhttp.onreadystatechange=function(){
 		if (xmlhttp.readyState==4 && xmlhttp.status==200){
-		
+			//console.log("\n"+myDiv);
+			//console.log(xmlhttp.responseText.length);
+			//console.log(xmlhttp.responseText);
 			var tx=xmlhttp.responseText.replace(/class=\"org\" /g,"");
 			var tx=tx.replace(/<a href\=\"(.*?)\"/g,"<a href='javascript:void(0);' onClick='loadURL(\"$1\")' class='out'");
 			//console.log(tx);
@@ -141,8 +146,10 @@ function loadXMLDoc(xurl,myDiv){
 }
 
 
-function zapal(){document.getElementById("strona").style.opacity='1.0';}	
-function zgas(){document.getElementById("strona").style.opacity='0.7';}	
+//function zapal(){document.getElementById("strona").style.opacity='1.0';}	
+//function zgas(){document.getElementById("strona").style.opacity='0.7';}	
+function zapal(){$("#strona").style.opacity='1.0';}	
+function zgas() {$("#strona").style.opacity='0.7';}	
 
 function koniec(){
 	try  {navigator.app.exitApp();}
