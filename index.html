@@ -111,6 +111,8 @@ var $=function kapiszon(id) {
 		loadXMLDoc('http://www.wi.zut.edu.pl/ogloszenia-dla-kandydatow?format=raw&i=3','kandydaci');
 		loadXMLDoc('http://www.wi.zut.edu.pl/aktualnosci-biblioteki/aktualnosci-wydawnicze?format=raw&i=3','biblioteka');
 		loadXMLDoc('http://www.wi.zut.edu.pl/oferty-pracy?format=raw&d=60&i=10','oferty');
+		loadXMLDoc('http://www.wi.zut.edu.pl/cdn/json/rss.php?format=raw&i=5&rss=http://www.zut.edu.pl/rssfeed-studenci','ZUT');
+		
 		
 	
 
@@ -176,7 +178,8 @@ function koniec(){
 function loadURL(url){
 	try  { navigator.app.loadUrl(url, { openExternal:true } );  }
 	catch(err) {
-	  window.location.href=url;
+	  //window.location.href=url;
+	  window.open(url,'_blank');
 	  }
 }
 
@@ -292,6 +295,11 @@ function skocz(name){
 			<div id="oferty"></div>
 		</div>
 	</div>
+	<div class="col-1-3">
+		<div class="wrapper">		
+			<div id="ZUT"></div>
+		</div>
+	</div>
 
 </div>
 </div><!--//id=strona-->
@@ -324,6 +332,7 @@ function skocz(name){
 		<button onClick='skocz("ogloszenia-dla-kandydatow")' class="btn btn-info">Kandydaci</button>
 		<button onClick='skocz("biblioteka")' class="btn btn-inverse">Biblioteka</button>
 		<button onClick='skocz("oferty")'  class="btn btn-primary">Oferty</button>
+		<button onClick='skocz("ZUT")'  class="btn btn-inverse">ZUT</button>
 		
 		<button onClick="koniec();"     class="btn btn-danger">Koniec</button>
 		<button onClick='loadURL("http://wi.zut.edu.pl")' class="btn im" title="WI.ZUT.EDU.PL"> <img src="pliki/mini-wizut.jpg" /></button>
