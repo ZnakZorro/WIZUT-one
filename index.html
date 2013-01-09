@@ -10,12 +10,25 @@
 <link href='pliki/font_PT_Sans_Narrow.css' rel='stylesheet' type='text/css'>
 <link rel="stylesheet" type="text/css" href="pliki/mini3.css" />
 <script type="text/javascript" charset="utf-8" src="phonegap.js"></script>
-<script type="text/javascript" charset="utf-8" src="kapiszon.js"></script>
 <script>
 var menuOpen=true;
 var ileRazy=0;
 var ileAjax=0;
 var maxAjax=7;
+
+var $=function kapiszon(id) {
+	var prefix=id[0];
+	var iid=id.slice(1,id.length);
+
+	switch (prefix){
+		case '#':	return document.getElementById(iid);   			break;
+		case '.':	return document.getElementsByClassName(iid);  	break;
+		default:	return document.getElementsByTagName(id); 
+		}
+		
+	}
+
+
     function onLoad() {
         document.addEventListener("deviceready", onDeviceReady, false);
 		onDeviceReady();	
@@ -97,6 +110,7 @@ var maxAjax=7;
 		loadXMLDoc('http://www.wi.zut.edu.pl/pracownicy?format=raw&i=3','pracownicy');
 		loadXMLDoc('http://www.wi.zut.edu.pl/ogloszenia-dla-kandydatow?format=raw&i=3','kandydaci');
 		loadXMLDoc('http://www.wi.zut.edu.pl/aktualnosci-biblioteki/aktualnosci-wydawnicze?format=raw&i=3','biblioteka');
+		loadXMLDoc('http://www.wi.zut.edu.pl/oferty-pracy?format=raw&d=60&i=10','oferty');
 		
 	
 
@@ -265,9 +279,17 @@ function skocz(name){
 			<div id="kandydaci"></div>
 		</div>
 	</div>
+</div>
+
+<div class="grid grid-pad">
 	<div class="col-1-3">
 		<div class="wrapper">		
 			<div id="biblioteka"></div>
+		</div>
+	</div>
+	<div class="col-1-3">
+		<div class="wrapper">		
+			<div id="oferty"></div>
 		</div>
 	</div>
 
@@ -294,13 +316,14 @@ function skocz(name){
 <br />
 	
 	<div id="menu" class="content menu" style="display:block; position:fixed; bottom:0px; left:0; width:100%; background:#247; color:#fff; border:1px solid #000; padding:2px; margin:0;">
-		<button onClick='skocz("aktualnosci")'      class="btn btn-inverse">Aktualności</button>
-		<button onClick='skocz("ogloszenia")'       class="btn btn-warning">Studenci</button>
-		<button onClick='skocz("zmiany-w-planie")'  class="btn btn-warning">Plan</button>
+		<button onClick='skocz("aktualnosci")'      class="btn btn-success">Aktualności</button>
+		<button onClick='skocz("ogloszenia")'       class="btn btn-primary">Studenci</button>
+		<button onClick='skocz("zmiany-w-planie")'  class="btn btn-primary">Plan</button>
 		<button onClick='skocz("doktoranci-wizut")' class="btn btn-info">Doktoranci</button>
 		<button onClick='skocz("pracownicy")'                class="btn btn-info">Pracownicy</button>
 		<button onClick='skocz("ogloszenia-dla-kandydatow")' class="btn btn-info">Kandydaci</button>
 		<button onClick='skocz("biblioteka")' class="btn btn-inverse">Biblioteka</button>
+		<button onClick='skocz("oferty")'  class="btn btn-primary">Oferty</button>
 		
 		<button onClick="koniec();"     class="btn btn-danger">Koniec</button>
 		<button onClick='loadURL("http://wi.zut.edu.pl")' class="btn im" title="WI.ZUT.EDU.PL"> <img src="pliki/mini-wizut.jpg" /></button>
